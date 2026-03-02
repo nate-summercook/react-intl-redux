@@ -64,7 +64,7 @@
   "overrides": {
     "minimatch": "^9.0.7"
   },
-  "repository": "nate-summercook/react-intl-redux",
+  "repository": "ratson/react-intl-redux",
   "license": "MIT",
   "files": [
     "*.md",
