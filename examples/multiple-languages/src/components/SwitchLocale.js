@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { updateIntl } from 'react-intl-redux'
+import { updateIntl } from '@nate-summercook/react-intl-redux'
 
 import store from '../store'
 

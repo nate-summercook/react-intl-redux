@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { intlReducer } from 'react-intl-redux'
+import { intlReducer } from '@nate-summercook/react-intl-redux'
 
 export const UPDATE_LOCALES = 'UPDATE_LOCALES'
 

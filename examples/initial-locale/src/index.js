@@ -1,6 +1,6 @@
 import { FormattedMessage } from 'react-intl'
 import { configureStore } from '@reduxjs/toolkit'
-import { IntlProvider, intlReducer } from 'react-intl-redux'
+import { IntlProvider, intlReducer } from '@nate-summercook/react-intl-redux'
 import { Provider } from 'react-redux'
 import { createRoot } from 'react-dom/client'
 

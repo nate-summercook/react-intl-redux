@@ -1,6 +1,6 @@
 {
-  "name": "react-intl-redux",
-  "version": "2.4.1",
+  "name": "@nate-summercook/react-intl-redux",
+  "version": "3.0.0",
   "description": "Redux binding for React Intl",
   "main": "lib",
   "side-effects": false,
@@ -64,7 +64,7 @@
   "overrides": {
     "minimatch": "^9.0.7"
   },
-  "repository": "ratson/react-intl-redux",
+  "repository": "nate-summercook/react-intl-redux",
   "license": "MIT",
   "files": [
     "*.md",
