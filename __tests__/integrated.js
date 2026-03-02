@@ -1,14 +1,11 @@
 import { render, act } from '@testing-library/react'
 import { FormattedNumber } from 'react-intl'
 import { Provider } from 'react-redux'
-import { combineReducers, createStore } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import { IntlProvider, intlReducer, updateIntl } from '../src/'
 
 test('change locale', () => {
-  const reducer = combineReducers({
-    intl: intlReducer
-  })
-  const store = createStore(reducer)
+  const store = configureStore({ reducer: { intl: intlReducer } })
   const App = () => (
     <Provider store={store}>
       <IntlProvider>

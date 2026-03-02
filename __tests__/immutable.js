@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 import Immutable from 'immutable'
 import { FormattedNumber } from 'react-intl'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import { IntlProvider, intlReducer } from '../src/'
 
 function combineImmutableReducers(reducers) {
@@ -25,7 +25,11 @@ test('IntlProvider should render default en locale', () => {
       messages: {}
     }
   })
-  const store = createStore(reducer, initialState)
+  const store = configureStore({
+    reducer,
+    preloadedState: initialState,
+    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
+  })
   const intlSelector = state => state.get('intl').toJS()
   const { container } = render(
     <Provider store={store}>

@@ -4,9 +4,7 @@ import { createRoot } from 'react-dom/client'
 
 import Greeting from './components/Greeting'
 import SwitchLocale from './components/SwitchLocale'
-import store, { DevTools } from './store'
-
-const UPDATE_LOCALES = 'UPDATE_LOCALES'
+import store, { UPDATE_LOCALES } from './store'
 
 const App = () => {
   const handleLoadLocales = () => {
@@ -37,7 +35,6 @@ const App = () => {
             </button>{' '}
             <SwitchLocale />
           </p>
-          <DevTools />
         </div>
       </IntlProvider>
     </Provider>
