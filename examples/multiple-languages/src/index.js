@@ -1,8 +1,6 @@
-/* eslint-env browser */
 import { IntlProvider } from 'react-intl-redux'
 import { Provider } from 'react-redux'
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 import Greeting from './components/Greeting'
 import SwitchLocale from './components/SwitchLocale'
@@ -10,8 +8,8 @@ import store, { DevTools } from './store'
 
 const UPDATE_LOCALES = 'UPDATE_LOCALES'
 
-class App extends React.Component {
-  handleLoadlLocales = () => {
+const App = () => {
+  const handleLoadLocales = () => {
     store.dispatch({
       type: UPDATE_LOCALES,
       payload: {
@@ -28,24 +26,22 @@ class App extends React.Component {
     })
   }
 
-  render() {
-    return (
-      <Provider store={store}>
-        <IntlProvider>
-          <div>
-            <Greeting />
-            <p>
-              <button type="button" onClick={this.handleLoadlLocales}>
-                Local locales
-              </button>{' '}
-              <SwitchLocale />
-            </p>
-            <DevTools />
-          </div>
-        </IntlProvider>
-      </Provider>
-    )
-  }
+  return (
+    <Provider store={store}>
+      <IntlProvider>
+        <div>
+          <Greeting />
+          <p>
+            <button type="button" onClick={handleLoadLocales}>
+              Local locales
+            </button>{' '}
+            <SwitchLocale />
+          </p>
+          <DevTools />
+        </div>
+      </IntlProvider>
+    </Provider>
+  )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+createRoot(document.getElementById('root')).render(<App />)

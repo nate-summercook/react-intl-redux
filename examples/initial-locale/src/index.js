@@ -1,10 +1,8 @@
-/* globals document */
 import { FormattedMessage } from 'react-intl'
 import { createStore, combineReducers } from 'redux'
 import { IntlProvider, intlReducer } from 'react-intl-redux'
 import { Provider } from 'react-redux'
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 const reducer = combineReducers({
   intl: intlReducer
@@ -30,4 +28,4 @@ const App = () => (
   </Provider>
 )
 
-ReactDOM.render(<App />, document.getElementById('root'))
+createRoot(document.getElementById('root')).render(<App />)

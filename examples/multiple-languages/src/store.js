@@ -1,6 +1,5 @@
 import { createStore, combineReducers } from 'redux'
 import { intlReducer } from 'react-intl-redux'
-import React from 'react'
 
 import { createDevTools } from 'redux-devtools'
 import DockMonitor from 'redux-devtools-dock-monitor'
