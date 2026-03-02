@@ -59,7 +59,7 @@ const initialState = {
 const store = createStore(reducer, initialState);
 ```
 
-Refer to the [`initial-locale` example](https://github.com/ratson/react-intl-redux/tree/master/examples/initial-locale) for more details.
+Refer to the [`initial-locale` example](https://github.com/nate-summercook/react-intl-redux/tree/master/examples/initial-locale) for more details.
 
 ### Switch `locale` and `messages` on request
 
@@ -127,7 +127,7 @@ store.dispatch(
 
 ### Use with `redux-immutable`
 
-redux-immutable hasn't been maintained since years, so it's no longer supported. This is how you combine reducers now: [test](https://github.com/ratson/react-intl-redux/blob/master/test/immutable.spec.js).
+redux-immutable hasn't been maintained since years, so it's no longer supported. This is how you combine reducers now: [test](https://github.com/nate-summercook/react-intl-redux/blob/master/__tests__/immutable.js).
 
 ## Examples
 
