@@ -1,10 +1,11 @@
-import js from '@eslint/js'
-import eslintReact from '@eslint-react/eslint-plugin'
-import globals from 'globals'
+import js from '@eslint/js';
+import eslintReact from '@eslint-react/eslint-plugin';
+import globals from 'globals';
+import prettierConfig from 'eslint-config-prettier';
 
 export default [
   {
-    ignores: ['node_modules/**', 'lib/**', 'coverage/**']
+    ignores: ['**/node_modules/**', 'lib/**', 'esm/**', '**/dist/**', 'coverage/**'],
   },
   js.configs.recommended,
   eslintReact.configs.recommended,
@@ -37,4 +38,5 @@ export default [
       },
     },
   },
-]
+  prettierConfig,
+];

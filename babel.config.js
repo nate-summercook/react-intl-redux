@@ -1,30 +1,16 @@
-module.exports = {
-  presets: [
-    [
-      '@babel/preset-env',
-      {
-        targets: {
-          node: 4
-        }
-      }
+module.exports = (api) => {
+  const isEsm = api.env('esm');
+  const isProduction = process.env.NODE_ENV === 'production';
+
+  return {
+    presets: [
+      ['@babel/preset-env', isEsm ? { targets: { esmodules: true }, modules: false } : { targets: { node: 18 } }],
+      ['@babel/preset-react', { runtime: 'automatic' }],
     ],
-    ['@babel/preset-react', { runtime: 'automatic' }]
-  ],
-  plugins: [
-    '@babel/transform-runtime',
-    '@babel/plugin-transform-shorthand-properties',
-    '@babel/plugin-proposal-export-default-from'
-  ],
-  env: {
-    production: {
-      plugins: [
-        [
-          'transform-react-remove-prop-types',
-          {
-            mode: 'wrap'
-          }
-        ]
-      ]
-    }
-  }
-}
+    plugins: [
+      ...(isProduction ? [['transform-react-remove-prop-types', { mode: 'remove' }]] : []),
+      '@babel/plugin-transform-shorthand-properties',
+      '@babel/plugin-proposal-export-default-from',
+    ],
+  };
+};

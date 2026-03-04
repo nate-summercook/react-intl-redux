@@ -1,19 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { intlReducer } from '@nate-summercook/react-intl-redux'
+import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { intlReducer } from '@nate-summercook/react-intl-redux';
 
-export const UPDATE_LOCALES = 'UPDATE_LOCALES'
+const localesSlice = createSlice({
+  name: 'locales',
+  initialState: {},
+  reducers: {
+    updateLocales(state, action) {
+      return { ...state, ...action.payload };
+    },
+  },
+});
 
-function localesReducer(state = {}, action) {
-  switch (action.type) {
-    case UPDATE_LOCALES:
-      return {
-        ...state,
-        ...action.payload,
-      }
-    default:
-      return state
-  }
-}
+export const { updateLocales } = localesSlice.actions;
 
 // Redux DevTools Extension is automatically enabled by configureStore.
 // Install the browser extension to inspect state:
@@ -21,8 +19,8 @@ function localesReducer(state = {}, action) {
 const store = configureStore({
   reducer: {
     intl: intlReducer,
-    locales: localesReducer,
+    locales: localesSlice.reducer,
   },
-})
+});
 
-export default store
+export default store;

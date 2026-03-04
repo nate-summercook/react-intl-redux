@@ -1,15 +1,14 @@
-import { connect } from 'react-redux'
-import { IntlProvider } from 'react-intl'
+import { connect } from 'react-redux';
+import { IntlProvider } from 'react-intl';
 
 function defaultSelector(state) {
-  const { intl } = state
+  const { intl } = state;
   return {
     key: intl.locale,
-    ...intl
-  }
+    ...intl,
+  };
 }
 
-const mapStateToProps = (state, { intlSelector = defaultSelector }) =>
-  intlSelector(state)
+const mapStateToProps = (state, { intlSelector = defaultSelector }) => intlSelector(state);
 
-export default connect(mapStateToProps)(IntlProvider)
+export default connect(mapStateToProps)(IntlProvider);

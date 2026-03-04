@@ -1,24 +1,24 @@
-import { initialState, intlReducer, UPDATE } from '../src/'
+import { initialState, intlReducer, UPDATE } from '../src/';
 
 test('initialState should default to en', () => {
   expect(initialState).toEqual({
     locale: 'en',
-    messages: {}
-  })
-})
+    messages: {},
+  });
+});
 
 test('intlReducer should set initial state', () => {
-  expect(intlReducer(undefined, {})).toEqual(initialState)
-})
+  expect(intlReducer(undefined, {})).toEqual(initialState);
+});
 
 test('intlReducer can update state', () => {
   const payload = {
     locale: 'it',
-    messages: {}
-  }
+    messages: {},
+  };
   const action = {
     type: UPDATE,
-    payload
-  }
-  expect(intlReducer(undefined, action)).toEqual(payload)
-})
+    payload,
+  };
+  expect(intlReducer(undefined, action)).toEqual(payload);
+});

@@ -8,7 +8,7 @@ having translations in store and dispatching action to update it.
 ## Installation
 
 ```
-npm install react-intl-redux react react-intl react-redux redux --save
+npm install @nate-summercook/react-intl-redux react react-intl react-redux redux --save
 ```
 
 ## Usage
@@ -17,12 +17,12 @@ npm install react-intl-redux react react-intl react-redux redux --save
 <!-- eslint-disable no-undef -->
 
 ```js
-import React from "react";
-import ReactDOM from "react-dom";
-import { createStore, combineReducers } from "redux";
-import { FormattedNumber } from "react-intl";
-import { Provider, intlReducer } from "react-intl-redux";
-import reducers from "<project-path>/reducers";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, combineReducers } from 'redux';
+import { FormattedNumber } from 'react-intl';
+import { Provider, intlReducer } from '@nate-summercook/react-intl-redux';
+import reducers from '<project-path>/reducers';
 
 const reducer = combineReducers({
   ...reducers,
@@ -37,7 +37,7 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(<App />, document.getElementById("container"));
+ReactDOM.render(<App />, document.getElementById('container'));
 ```
 
 ### Provide `locale` and `messages` on load
@@ -49,9 +49,9 @@ You should provide a different `locale` and `messages` if your user is not using
 ```js
 const initialState = {
   intl: {
-    locale: "it",
+    locale: 'it',
     messages: {
-      "app.greeting": "Ciao!",
+      'app.greeting': 'Ciao!',
     },
   },
   // ...other initialState
@@ -68,13 +68,17 @@ You could also switch `locale` on user's request by dispatching `updateIntl` act
 <!-- eslint-disable no-undef -->
 
 ```js
-import { updateIntl } from "react-intl-redux";
+import { useSelector, useDispatch } from 'react-redux'
+import { updateIntl } from "@nate-summercook/react-intl-redux";
 
-store.dispatch(
+const dispatch = useDispatch();
+const locales = useSelector(state => state.locales);
+
+dispatch(
   updateIntl({
-    locale,
-    messages,
-  }),
+    locale: e.target.value,
+    messages: locales[e.target.value],
+  });
 );
 ```
 
@@ -85,16 +89,16 @@ for loading locale data in browsers.
 
 ### `Provider` vs `IntlProvider`
 
-In most cases, `react-intl-redux` will be wrapped immediately after `Provider` from `react-redux`. For convenient, `react-intl-redux` provides `Provider` to do that for you.
+In most cases, `@nate-summercook/react-intl-redux` will be wrapped immediately after `Provider` from `react-redux`. For convenient, `@nate-summercook/react-intl-redux` provides `Provider` to do that for you.
 
 However, if you don't want it, you could do it manually via [`IntlProvider`](https://github.com/yahoo/react-intl/wiki/Components#intlprovider). For example,
 
 <!-- eslint-disable no-undef -->
 
 ```js
-import React from "react";
-import { IntlProvider } from "react-intl-redux";
-import { Provider } from "react-redux";
+import React from 'react';
+import { IntlProvider } from '@nate-summercook/react-intl-redux';
+import { Provider } from 'react-redux';
 
 const App = () => (
   <Provider store={store}>
@@ -114,7 +118,7 @@ To change `formats` through [React components](https://github.com/yahoo/react-in
 <!-- eslint-disable no-undef -->
 
 ```js
-import { updateIntl } from "react-intl-redux";
+import { updateIntl } from '@nate-summercook/react-intl-redux';
 
 store.dispatch(
   updateIntl({
