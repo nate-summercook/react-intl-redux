@@ -1,18 +1,28 @@
-import { connect } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 import { IntlProvider } from 'react-intl';
+import type { ReactNode } from 'react';
 import type { IntlState } from '../types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type SelectorFunction = (state: any) => IntlState & { key?: string };
+type SelectorFunction = (state: any) => IntlState;
 
-const defaultSelector = (state: { intl: IntlState }): IntlState & { key: string } => ({
-  key: state.intl.locale,
-  ...state.intl,
-});
+const defaultSelector = (state: { intl: IntlState }): IntlState => state.intl;
 
-const mapStateToProps = (
-  state: unknown,
-  { intlSelector = defaultSelector as SelectorFunction }: { intlSelector?: SelectorFunction },
-) => intlSelector(state);
+interface ConnectedIntlProviderProps {
+  intlSelector?: SelectorFunction;
+  children?: ReactNode;
+}
 
-export default connect(mapStateToProps)(IntlProvider);
+const ConnectedIntlProvider = ({
+  intlSelector = defaultSelector as SelectorFunction,
+  children,
+}: ConnectedIntlProviderProps) => {
+  const intlState = useSelector(intlSelector, shallowEqual);
+  return (
+    <IntlProvider key={intlState.locale} {...intlState}>
+      {children}
+    </IntlProvider>
+  );
+};
+
+export default ConnectedIntlProvider;

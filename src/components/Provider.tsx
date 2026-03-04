@@ -8,7 +8,7 @@ interface ProviderProps {
   children: ReactNode;
 }
 
-const Provider = ({ store, children }: ProviderProps): React.JSX.Element => (
+const Provider = ({ store, children }: ProviderProps) => (
   <ReduxProvider store={store}>
     <IntlProvider>{children}</IntlProvider>
   </ReduxProvider>

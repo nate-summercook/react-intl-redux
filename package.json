@@ -1,6 +1,6 @@
 {
   "name": "@nate-summercook/react-intl-redux",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Redux binding for React Intl",
   "main": "lib",
   "module": "esm",
@@ -22,7 +22,7 @@
     "clean": "del lib esm types coverage",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "prepare": "husky",
+    "prepare": "husky || true",
     "prepublish": "run-s clean build",
     "test": "jest"
   },
