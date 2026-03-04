@@ -1,6 +1,6 @@
 # React Intl Redux
 
-[Redux](https://github.com/reactjs/redux) binding for [React Intl](https://github.com/yahoo/react-intl).
+[Redux](https://github.com/reactjs/redux) binding for [React Intl](https://formatjs.github.io/).
 
 Building idiomatic React Redux Application by
 having translations in store and dispatching action to update it.
@@ -19,17 +19,18 @@ npm install @nate-summercook/react-intl-redux react react-intl react-redux redux
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers } from 'redux';
+import { createRoot } from 'react-dom/client';
+import { configureStore } from '@reduxjs/toolkit';
+import { intlReducer } from '@nate-summercook/react-intl-redux';
 import { FormattedNumber } from 'react-intl';
-import { Provider, intlReducer } from '@nate-summercook/react-intl-redux';
 import reducers from '<project-path>/reducers';
 
-const reducer = combineReducers({
-  ...reducers,
-  intl: intlReducer,
+const store = configureStore({
+  reducer: {
+    ...reducers
+    intl: intlReducer,
+  },
 });
-
-const store = createStore(reducer);
 
 const App = () => (
   <Provider store={store}>
@@ -37,7 +38,7 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(<App />, document.getElementById('container'));
+createRoot(document.getElementById('root')).render(<App />);
 ```
 
 ### Provide `locale` and `messages` on load
@@ -56,7 +57,7 @@ const initialState = {
   },
   // ...other initialState
 };
-const store = createStore(reducer, initialState);
+const store = configureStore(reducer, initialState);
 ```
 
 Refer to the [`initial-locale` example](https://github.com/nate-summercook/react-intl-redux/tree/master/examples/initial-locale) for more details.
@@ -91,7 +92,7 @@ for loading locale data in browsers.
 
 In most cases, `@nate-summercook/react-intl-redux` will be wrapped immediately after `Provider` from `react-redux`. For convenient, `@nate-summercook/react-intl-redux` provides `Provider` to do that for you.
 
-However, if you don't want it, you could do it manually via [`IntlProvider`](https://github.com/yahoo/react-intl/wiki/Components#intlprovider). For example,
+However, if you don't want it, you could do it manually via [`IntlProvider`](https://formatjs.github.io/docs/react-intl/components#intlprovider). For example,
 
 <!-- eslint-disable no-undef -->
 
@@ -111,16 +112,20 @@ const App = () => (
 
 ### Formatting Data
 
-`react-intl` provides two ways to format data, see the [official docs](https://github.com/yahoo/react-intl/wiki#formatting-data).
+`react-intl` provides two ways to format data, see the [official docs](https://formatjs.github.io/docs/react-intl/api).
 
-To change `formats` through [React components](https://github.com/yahoo/react-intl/wiki/Components),
+To change `formats` through [React components](https://formatjs.github.io/docs/react-intl/components),
 
 <!-- eslint-disable no-undef -->
 
 ```js
+import { useSelector, useDispatch } from 'react-redux';
 import { updateIntl } from '@nate-summercook/react-intl-redux';
 
-store.dispatch(
+const dispatch = useDispatch();
+const locales = useSelector((state) => state.locales);
+
+dispatch(
   updateIntl({
     locale,
     formats,
@@ -153,4 +158,4 @@ If it doesn't, here are few solutions could be tried,
 
 2. How to use `intl` in asynchronous action?
 
-A simple solution would be retrive `intl` object using [`injectIntl`](https://github.com/yahoo/react-intl/wiki/API#injection-api) and pass it in the action payload.
+A simple solution would be retrive `intl` object using [`injectIntl`](https://formatjs.github.io/docs/react-intl/api#injectintl-hoc) and pass it in the action payload.

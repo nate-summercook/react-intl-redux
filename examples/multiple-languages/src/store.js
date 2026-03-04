@@ -13,9 +13,6 @@ const localesSlice = createSlice({
 
 export const { updateLocales } = localesSlice.actions;
 
-// Redux DevTools Extension is automatically enabled by configureStore.
-// Install the browser extension to inspect state:
-// https://github.com/reduxjs/redux-devtools/tree/main/extension
 const store = configureStore({
   reducer: {
     intl: intlReducer,
