@@ -1,10 +1,20 @@
 ## Next
 
+## v3.0.1
+
+- Updated examples to a more modern setup
+- Added an esm build for the library
+- Targeting node >= 18, as react 19 requires that anyway
+- Added prettier
+- Migrated to typescript for better types and decomissioned PropTypes as they are an outdated concept
+- Updated README to match the new setup at `@nate-summercook/react-intl-redux`
+
 ## v3.0.0
 
 - Added support for `react@^19.0.0`, `react-intl@^8.0.0` and `react-redux@^9.0.0`
 - Updated all `dependencies`, `devDependencies` and `peerDependencies`
 - Migrated tests to use `@reduxjs/toolkit`
+- released under `@nate-summercook/react-intl-redux`
 
 ## v2.3.0
 
