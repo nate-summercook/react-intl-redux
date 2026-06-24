@@ -1,7 +1,8 @@
-## Next
+## v3.1.0
 
 - Added support for `react-intl@^9.0.0` and `react-intl@^10.0.0`
 - Migrated to TypeScript v6 and Babel v8
+- Removed the now-redundant `minimatch` override
 - Updated `devDependencies`
 
 ## v3.0.1
