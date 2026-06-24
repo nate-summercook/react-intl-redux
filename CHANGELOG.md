@@ -1,5 +1,8 @@
 ## Next
 
+- Added support for `react-intl@^9.0.0` and `react-intl@^10.0.0`
+- Updated `devDependencies`
+
 ## v3.0.1
 
 - Updated examples to a more modern setup
