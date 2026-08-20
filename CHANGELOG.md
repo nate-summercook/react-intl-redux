@@ -1,3 +1,10 @@
+## v3.1.1
+
+- Updated `devDependencies`
+- Updated the examples to `react-intl@^10.0.0`, Vite v8 and `@vitejs/plugin-react` v6
+- Renamed the examples' Vite configs to `.mjs` for the Vite v8 config loader
+- Kept `typescript` on v6, as `typescript-eslint` does not support v7 yet
+
 ## v3.1.0
 
 - Added support for `react-intl@^9.0.0` and `react-intl@^10.0.0`
