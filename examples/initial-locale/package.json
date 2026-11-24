@@ -3,22 +3,25 @@
   "name": "initial-locale-example",
   "version": "3.0.1",
   "scripts": {
-    "prepare": "del node_modules/@nate-summercook/react-intl-redux/node_modules",
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@nate-summercook/react-intl-redux": "file:../..",
-    "@reduxjs/toolkit": "^2.12.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "react-intl": "^10.1.22",
-    "react-redux": "^9.3.0"
+    "@reduxjs/toolkit": "^2.15.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-intl": "^12.2.1",
+    "react-redux": "^9.3.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^6.1.0",
-    "del-cli": "^7.0.0",
-    "vite": "^8.2.2"
+    "@vitejs/plugin-react": "^6.3.0",
+    "vite": "^8.3.8"
+  },
+  "allowScripts": {
+    "file:../../../..": false,
+    "@parcel/watcher": false,
+    "fsevents": false
   }
 }
